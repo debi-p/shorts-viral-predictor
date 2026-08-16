@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HookScore</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --brand: #ff0000;
+      --ink: #222;
+      --muted: #666;
+      --line: #e6e6e6;
+      --page: #f7f7f7;
+      --panel: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--page);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 44px 0 56px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand);
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      margin: 14px 0 0;
+      font-size: clamp(20px, 3vw, 30px);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .summary {
+      margin: 24px 0 30px;
+      max-width: 880px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .highlights li {
+      min-height: 88px;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .highlights strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    .media-block {
+      margin-top: 26px;
+    }
+
+    .media-block h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    video {
+      aspect-ratio: 16 / 9;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 24px, 960px);
+        padding-top: 28px;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>HookScore</h1>
+      <p class="tagline">Score your Short's hook before you post.</p>
+    </header>
+
+    <p class="summary">
+      HookScore helps creators test a YouTube Short before publishing by checking the title, spoken script, and trend context. Upload a local draft or paste a Shorts URL to get a simple score and practical suggestions for improving retention, clarity, captions, hashtags, and calls to action.
+    </p>
+
+    <ul class="highlights">
+      <li><strong>Upload drafts</strong>Analyze local videos under 60 seconds with speech transcription.</li>
+      <li><strong>Check Shorts URLs</strong>Review existing Shorts using real YouTube metadata and trends.</li>
+      <li><strong>Improve faster</strong>Get readable action steps instead of a long AI paragraph.</li>
+    </ul>
+
+    <section class="media-block" aria-labelledby="screenshot-title">
+      <h2 id="screenshot-title">Analyzer Preview</h2>
+      <img src="docs/screenshots/hookscore-analyzer.png" alt="HookScore analyzer screen">
+    </section>
+
+    <section class="media-block" aria-labelledby="video-title">
+      <h2 id="video-title">Demo Video</h2>
+      <video src="docs/media/HookScore.mp4" controls preload="metadata"></video>
+    </section>
+  </main>
+</body>
+</html>

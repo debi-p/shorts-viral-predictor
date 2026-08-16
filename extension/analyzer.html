@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HookScore</title>
+  <style>
+    body {
+      max-width: 520px;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0 auto;
+      padding: 32px 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      margin-top: 0;
+      color: #ff0000;
+    }
+    h2 img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .tagline {
+      margin: -6px 0 20px;
+      color: #666;
+      font-size: 14px;
+    }
+    #drop-zone {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 42px 16px;
+      text-align: center;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    #drop-zone.hover {
+      border-color: #ff0000;
+      background-color: #fff5f5;
+    }
+    .url-box {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .url-row {
+      display: flex;
+      gap: 8px;
+    }
+    #youtube-url {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+    #analyze-url {
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #ff0000;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .divider {
+      margin: 16px 0;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+    #file-input {
+      display: none;
+    }
+    #status {
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    #progress-wrap {
+      height: 8px;
+      margin-top: 14px;
+      border-radius: 999px;
+      background-color: #eee;
+      overflow: hidden;
+      display: none;
+    }
+    #progress-bar {
+      width: 42%;
+      height: 100%;
+      border-radius: 999px;
+      background-color: #ff0000;
+      animation: loading 1s ease-in-out infinite alternate;
+    }
+    @keyframes loading {
+      from {
+        transform: translateX(-75%);
+      }
+      to {
+        transform: translateX(175%);
+      }
+    }
+    #results-box {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 6px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      display: none;
+    }
+    .score-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+    .suggestion-item {
+      font-size: 14px;
+      line-height: 1.45;
+      margin-top: 10px;
+      padding: 10px 10px 10px 12px;
+      border-left: 3px solid #ff0000;
+      background-color: #fff8f8;
+      border-radius: 4px;
+    }
+    .suggestion-label {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #b00000;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <h2><img src="icons/icon-128.png" alt="">HookScore</h2>
+  <p class="tagline">Score your Short's hook before you post.</p>
+  <div class="url-box">
+    <label for="youtube-url">YouTube Shorts URL</label>
+    <div class="url-row">
+      <input id="youtube-url" type="url" placeholder="https://youtube.com/shorts/...">
+      <button id="analyze-url" type="button">Analyze</button>
+    </div>
+  </div>
+  <div class="divider">or upload a local draft</div>
+  <div id="drop-zone">
+    <p>Drag & Drop your Short here</p>
+    <p style="font-size: 12px; color: #999;">Must be under 60 seconds</p>
+    <input type="file" id="file-input" accept="video/*">
+  </div>
+  <div id="status"></div>
+  <div id="progress-wrap">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="results-box">
+    <div class="score-title">Hook Score: <span id="score-val">0%</span></div>
+    <div id="suggestions-list"></div>
+  </div>
+  <script src="analyzer.js"></script>
+</body>
+</html>
